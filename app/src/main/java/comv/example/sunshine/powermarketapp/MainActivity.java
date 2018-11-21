@@ -8,13 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
+
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -31,6 +25,9 @@ import comv.example.sunshine.powermarketapp.util.MyApplication;
 import comv.example.sunshine.powermarketapp.util.PlantAdapter;
 import comv.example.sunshine.powermarketapp.util.Plant_price;
 import comv.example.sunshine.powermarketapp.util.Utility;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -40,52 +37,44 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+    }
 
-
-
-
-        //请求地址
-        String url = "http://39.105.220.221:8080/MyFirstWebApp/QueryPrice";
-        String tag = "QUERY";
-        //取得请求队列
-        RequestQueue requestQueue = Volley.newRequestQueue(MyApplication.getContext());
-
-//        requestQueue.cancelAll(tag);
-
-
-        final StringRequest request=new StringRequest(Request.Method.GET, url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            Toast.makeText(MainActivity.this,"response success",Toast.LENGTH_SHORT).show();
-                            Utility.handlePlantPrice(response,allPlantPrice);
-                            RecyclerView recyclerView=(RecyclerView)findViewById(R.id.recycler_view);
-                            LinearLayoutManager layoutManager=new LinearLayoutManager(MainActivity.this);
-                            recyclerView.setLayoutManager(layoutManager);
-                            PlantAdapter adapter=new PlantAdapter(allPlantPrice);
-                            recyclerView.setAdapter(adapter);
-                        } catch (Exception e) {
-                            //做自己的请求异常操作，如Toast提示（“无网络连接”等）
-                            Log.e("TAG", "onResponse: ", e);
-                        }
-                    }
-                }, new Response.ErrorListener() {
+    /*
+    * 发送网络请求
+    * dependency:OkHttp3
+    * method:get
+    * */
+    private void sendRequestWithOkHttp(){
+        new Thread(new Runnable() {
             @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.e("TAG",error.getMessage(),error );
+            public void run() {
+                try{
+                    OkHttpClient client=new OkHttpClient();
+                    Request request=new Request.Builder()
+                            .url("http://39.105.220.221:8080/MyFirstWebApp/QueryPrice")
+                            .build();
+                    Response response=client.newCall(request).execute();
+                    String responseData=response.body().string();
+//                    showResponse();
+                }catch (Exception e){
+                    Log.d("getError", "run: ",e);
+                }
+            }
+        }).start();
+
+    }
+
+    /*
+    * 处理返回数据，并进行UI操作
+    * 要用到解析JSON数据的方法
+    * */
+    private void showResponse(final String response){
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                //在这里进行UI操作
             }
         });
-
-        //设置TAG标签
-        request.setTag(tag);
-        //将请求添加到队列中
-        requestQueue.add(request);
-
-
-
-
-
 
     }
 }
