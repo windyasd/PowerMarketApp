@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <!--<LinearLayout-->
+        <!--android:orientation="horizontal"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="60dp">-->
+        <!--<TextView-->
+            <!--android:text="电厂名称"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:textSize="18sp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:layout_gravity="center_vertical" />-->
+        <!--<TextView-->
+            <!--android:text="早上电价"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center_vertical"-->
+            <!--android:textSize="18sp"-->
+            <!--android:layout_weight="1" />-->
+        <!--<TextView-->
+            <!--android:text="下午电价"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="1"-->
+            <!--android:textSize="18sp"-->
+            <!--android:layout_gravity="center_vertical" />-->
+        <!--<TextView-->
+            <!--android:text="晚上电价"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="1"-->
+            <!--android:textSize="18sp"-->
+            <!--android:layout_gravity="center_vertical" />-->
+
+    <!--</LinearLayout>-->
+
+    <!--<LinearLayout-->
+        <!--android:orientation="horizontal"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="60dp">-->
+        <!--<TextView-->
+            <!--android:id="@+id/plant_name"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:textSize="18sp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:layout_gravity="center_vertical" />-->
+        <!--<TextView-->
+            <!--android:id="@+id/morning_price"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center_vertical"-->
+            <!--android:textSize="18sp"-->
+            <!--android:layout_weight="1" />-->
+        <!--<TextView-->
+            <!--android:id="@+id/afternoon_price"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="1"-->
+            <!--android:textSize="18sp"-->
+            <!--android:layout_gravity="center_vertical" />-->
+        <!--<TextView-->
+            <!--android:id="@+id/night_price"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="1"-->
+            <!--android:textSize="18sp"-->
+            <!--android:layout_gravity="center_vertical" />-->
+
+    <!--</LinearLayout>-->
+
+
+</LinearLayout>
